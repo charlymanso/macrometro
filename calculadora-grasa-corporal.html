@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Calculadora de grasa corporal gratis (método de la Marina) · Macrómetro</title>
+<meta name="description" content="Calcula tu porcentaje de grasa corporal con una cinta métrica: método de la Marina de EE. UU. Resultado en % de grasa, masa grasa y masa magra.">
+<meta name="google-site-verification" content="0I06I1MsxybB7g4-6dj7qjgs_pbRliKTd07mqxr5dvM" />
+<link rel="canonical" href="https://macrometro.vercel.app/calculadora-grasa-corporal">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Macrómetro">
+<meta property="og:title" content="Calculadora de grasa corporal gratis (método de la Marina)">
+<meta property="og:description" content="Calcula tu porcentaje de grasa corporal con una cinta métrica: método de la Marina de EE. UU. Resultado en % de grasa, masa grasa y masa magra.">
+<meta property="og:url" content="https://macrometro.vercel.app/calculadora-grasa-corporal">
+<meta property="og:image" content="https://macrometro.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F4EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1210" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de grasa corporal", "url": "https://macrometro.vercel.app/calculadora-grasa-corporal", "applicationCategory": "HealthApplication", "operatingSystem": "Any", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "description": "Calcula tu porcentaje de grasa corporal con una cinta métrica: método de la Marina de EE. UU. Resultado en % de grasa, masa grasa y masa magra."}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/article.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i></div>
+<div class="wrap">
+<nav class="nav">
+  <a class="brand" href="/"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12 20 4"/></svg></span>Macrómetro</a>
+  <a class="back" href="/">Ir a la calculadora →</a>
+</nav>
+<main>
+<div class="crumb"><a href="/">Inicio</a> › Herramientas</div>
+<h1>Calculadora de grasa corporal</h1>
+<p class="lede">Calcula tu porcentaje de grasa corporal en un minuto, solo con una cinta métrica. Sirve para saber en qué punto estás y seguir tu progreso.</p>
+
+<div class="gtool">
+  <div class="gcard">
+    <h2 class="gh">Tus medidas</h2>
+    <div class="gfield">
+      <span class="lbl">Sexo</span>
+      <div class="seg" id="sexo" role="group" aria-label="Sexo">
+        <button type="button" data-v="h" aria-pressed="true">Hombre</button>
+        <button type="button" data-v="m" aria-pressed="false">Mujer</button>
+      </div>
+    </div>
+    <div class="grow">
+      <div class="gfield"><label for="altura">Altura</label><div class="inp"><input id="altura" type="number" min="130" max="220" value="180" inputmode="numeric"><u>cm</u></div></div>
+      <div class="gfield"><label for="peso">Peso</label><div class="inp"><input id="peso" type="number" min="35" max="250" step="0.5" value="78" inputmode="decimal"><u>kg</u></div></div>
+      <div class="gfield"><label for="cuello">Cuello</label><div class="inp"><input id="cuello" type="number" min="20" max="70" step="0.5" value="38" inputmode="decimal"><u>cm</u></div></div>
+      <div class="gfield"><label for="cintura">Cintura</label><div class="inp"><input id="cintura" type="number" min="40" max="200" step="0.5" value="85" inputmode="decimal"><u>cm</u></div></div>
+      <div class="gfield" id="cadWrap" hidden><label for="cadera">Cadera</label><div class="inp"><input id="cadera" type="number" min="50" max="200" step="0.5" value="98" inputmode="decimal"><u>cm</u></div></div>
+    </div>
+  </div>
+
+  <div class="gcard gres" aria-live="polite">
+    <span class="lbl">Tu grasa corporal</span>
+    <div class="gbig"><span id="bf">0</span><small>%</small></div>
+    <div class="gcat" id="cat"></div>
+    <div class="gscale" aria-hidden="true"><i id="mark"></i></div>
+    <div class="gscale-l"><span>0 %</span><span>25 %</span><span>50 %</span></div>
+    <div class="gstats">
+      <div><span>Masa grasa</span><b id="fm">0</b></div>
+      <div><span>Masa magra</span><b id="lm">0</b></div>
+      <div><span>Metabolismo basal*</span><b id="bmr">0</b></div>
+    </div>
+    <p class="gnote" id="msg"></p>
+    <p class="gnote">*Estimado con la fórmula Katch-McArdle a partir de tu masa magra.</p>
+  </div>
+</div>
+
+<h2>Cómo medirte bien</h2>
+<p>El resultado depende mucho de medir con cuidado. Usa una cinta métrica flexible, sin apretar la piel, y mídete <strong>por la mañana y en ayunas</strong> para que sea comparable cada vez.</p>
+<ul>
+<li><strong>Cuello:</strong> justo debajo de la nuez, con la cinta ligeramente inclinada hacia abajo por delante.</li>
+<li><strong>Cintura (hombres):</strong> a la altura del ombligo, sin meter ni sacar barriga.</li>
+<li><strong>Cintura (mujeres):</strong> en la parte más estrecha del abdomen, normalmente por encima del ombligo.</li>
+<li><strong>Cadera (mujeres):</strong> en la parte más ancha de los glúteos.</li>
+</ul>
+<p>Haz cada medida dos o tres veces y usa la media.</p>
+
+<h2>Rangos de grasa corporal</h2>
+<div class="tblwrap"><table>
+<thead><tr><th>Categoría</th><th>Hombres</th><th>Mujeres</th></tr></thead>
+<tbody>
+<tr><td>Grasa esencial</td><td>2 - 5 %</td><td>10 - 13 %</td></tr>
+<tr><td>Atlético</td><td>6 - 13 %</td><td>14 - 20 %</td></tr>
+<tr><td>Fitness</td><td>14 - 17 %</td><td>21 - 24 %</td></tr>
+<tr><td>Promedio</td><td>18 - 24 %</td><td>25 - 31 %</td></tr>
+<tr><td>Obesidad</td><td>25 % o más</td><td>32 % o más</td></tr>
+</tbody></table></div>
+<p>Son rangos de referencia habituales (American Council on Exercise). No son un diagnóstico: lo saludable depende de la edad, la genética y otros factores.</p>
+
+<h2>Qué tan fiable es</h2>
+<p>El método de la Marina de EE. UU. es una estimación con un margen de error de unos <strong>3-4 puntos porcentuales</strong> respecto a técnicas de laboratorio como la DEXA. Es suficiente para ver tendencias: si tu cintura baja y tu peso se mantiene, estás perdiendo grasa. Para seguir tu progreso, mídete siempre del mismo modo y en las mismas condiciones.</p>
+
+<h2>Para qué te sirve el resultado</h2>
+<ul>
+<li><strong>Calcular mejor tus calorías.</strong> Con tu masa magra, la fórmula Katch-McArdle da un <a href="/metabolismo-basal">metabolismo basal</a> más ajustado si tienes mucho músculo o mucho sobrepeso.</li>
+<li><strong>Fijar un objetivo realista.</strong> Si quieres bajar de un porcentaje a otro, usa la guía de <a href="/calorias-para-adelgazar">calorías para adelgazar</a>.</li>
+<li><strong>Controlar que pierdes grasa y no músculo.</strong> Combínalo con una <a href="/proteinas-al-dia">ingesta de proteína adecuada</a> y entrenamiento de fuerza.</li>
+</ul>
+
+<script>
+const $=id=>document.getElementById(id);
+let sexo="h";
+const preset={h:{altura:180,peso:78,cuello:38,cintura:85},m:{altura:165,peso:62,cuello:32,cintura:72,cadera:98}};
+const cats={h:[[6,"Grasa esencial"],[14,"Atlético"],[18,"Fitness"],[25,"Promedio"],[999,"Obesidad"]],
+            m:[[14,"Grasa esencial"],[21,"Atlético"],[25,"Fitness"],[32,"Promedio"],[999,"Obesidad"]]};
+const fmt=(n,d=0)=>n.toLocaleString("es-ES",{minimumFractionDigits:d,maximumFractionDigits:d});
+const log=Math.log10;
+function calc(){
+  const h=+$("altura").value,w=+$("peso").value,n=+$("cuello").value,c=+$("cintura").value,k=+$("cadera").value;
+  const m=$("msg");m.textContent="";
+  let bf=NaN;
+  if(sexo==="h"){ if(h>0&&n>0&&c>n) bf=495/(1.0324-0.19077*log(c-n)+0.15456*log(h))-450; }
+  else { if(h>0&&n>0&&c>0&&k>0&&c+k>n) bf=495/(1.29579-0.35004*log(c+k-n)+0.22100*log(h))-450; }
+  if(!(bf>=2&&bf<=60)){
+    ["bf","fm","lm","bmr"].forEach(i=>$(i).textContent="–");$("cat").textContent="";$("mark").style.left="0";
+    m.textContent="Revisa las medidas: con estos valores no se puede calcular un resultado realista.";return;
+  }
+  $("bf").textContent=fmt(bf,1);
+  $("cat").textContent=cats[sexo].find(x=>bf<x[0])[1];
+  $("mark").style.left=Math.min(bf/50*100,100)+"%";
+  if(w>0){
+    const fm=w*bf/100,lm=w-fm;
+    $("fm").textContent=fmt(fm,1)+" kg";$("lm").textContent=fmt(lm,1)+" kg";
+    $("bmr").textContent=fmt(370+21.6*lm)+" kcal";
+  } else {["fm","lm","bmr"].forEach(i=>$(i).textContent="–");}
+}
+document.querySelectorAll("#sexo button").forEach(b=>b.addEventListener("click",()=>{
+  sexo=b.dataset.v;
+  document.querySelectorAll("#sexo button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $("cadWrap").hidden=sexo==="h";
+  const p=preset[sexo];Object.keys(p).forEach(id=>$(id).value=p[id]);
+  calc();
+}));
+["altura","peso","cuello","cintura","cadera"].forEach(id=>{
+  const el=$(id);
+  el.addEventListener("input",calc);
+  el.addEventListener("focus",()=>setTimeout(()=>el.select(),0));
+  el.addEventListener("mouseup",e=>e.preventDefault());
+});
+calc();
+</script>
+
+<section class="cta">
+  <h2>Calcula tus macros ahora</h2>
+  <p>Introduce tu edad, peso, altura y objetivo y obtén tus calorías y gramos de proteína, hidratos y grasas al instante.</p>
+  <a href="/">Abrir la calculadora</a>
+</section>
+<section class="related"><h2>Otras guías</h2><div class="rel"><a href="/proteinas-al-dia">¿Cuántas proteínas necesito al día?<span>Proteínas por kilo de peso</span></a><a href="/deficit-calorico">Déficit calórico: cuánto restar para perder grasa<span>Cuántas calorías restar</span></a><a href="/calorias-por-macronutriente">Calorías por macronutriente<span>4, 4 y 9: kcal de cada macro</span></a><a href="/calorias-de-mantenimiento">Cómo calcular tus calorías de mantenimiento<span>Cuántas calorías gastas al día</span></a><a href="/calorias-para-adelgazar">¿Cuántas calorías comer al día para adelgazar?<span>Calorías según tu objetivo</span></a><a href="/metabolismo-basal">Metabolismo basal: qué es y cómo calcularlo<span>Qué es y cómo calcular tu TMB</span></a></div></section>
+</main>
+<footer class="site-foot">
+  <div class="fgrid">
+    <div class="fbrand">
+      <div class="brand"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12 20 4"/></svg></span>Macrómetro</div>
+      <p>Calculadora gratuita de calorías y macronutrientes, basada en la fórmula Mifflin-St Jeor.</p>
+    </div>
+    <nav aria-label="Guías"><h3>Guías</h3><a href="/proteinas-al-dia">¿Cuántas proteínas necesito al día?</a><a href="/deficit-calorico">Déficit calórico: cuánto restar</a><a href="/calorias-por-macronutriente">Calorías por macronutriente</a><a href="/calorias-de-mantenimiento">Calcular calorías de mantenimiento</a><a href="/calorias-para-adelgazar">Cuántas calorías comer para adelgazar</a><a href="/metabolismo-basal">Qué es el metabolismo basal</a></nav>
+    <nav aria-label="Herramienta"><h3>Herramienta</h3><a href="/">Calculadora de macros</a><a href="/calculadora-grasa-corporal">Calculadora de grasa corporal</a><a href="/#como-funciona">Cómo funciona</a></nav>
+  </div>
+  <div class="fbottom"><span>© 2026 Macrómetro</span><span>Información orientativa para adultos sanos. No sustituye el consejo de un dietista-nutricionista o médico.</span></div>
+</footer>
+</div>
+</body>
+</html>
