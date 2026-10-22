@@ -43,20 +43,13 @@
   --radius:22px;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){:root{
   --bg:#0B1210; --bg2:#101A17; --surface:rgba(23,34,30,.72); --surface-solid:#17221E;
   --ink:#EAF3EE; --muted:#9BB0A6; --line:rgba(234,243,238,.12);
   --accent:#3DDC97; --accent2:#2BB87B; --accent-ink:#04120C; --glow:rgba(61,220,151,.28);
   --prot:#FF6B5E; --carb:#FFC23D; --fat:#6A9BFF;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 40px -16px rgba(0,0,0,.7);
   --blob1:#0F3D2B; --blob2:#3B2C0A; --blob3:#142A57; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0B1210; --bg2:#101A17; --surface:rgba(23,34,30,.72); --surface-solid:#17221E;
-  --ink:#EAF3EE; --muted:#9BB0A6; --line:rgba(234,243,238,.12);
-  --accent:#3DDC97; --accent2:#2BB87B; --accent-ink:#04120C; --glow:rgba(61,220,151,.28);
-  --prot:#FF6B5E; --carb:#FFC23D; --fat:#6A9BFF;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 40px -16px rgba(0,0,0,.7);
-  --blob1:#0F3D2B; --blob2:#3B2C0A; --blob3:#142A57; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -74,10 +67,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 .brand{display:flex;align-items:center;gap:10px;font:800 20px var(--display);letter-spacing:-.01em}
 .logo{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;color:var(--accent-ink);
   background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 6px 16px var(--glow)}
-.theme{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);
-  color:var(--ink);cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(10px)}
-.theme:hover{border-color:var(--accent)}
-.theme svg{width:20px;height:20px}
 
 .hero{max-width:720px;margin-bottom:clamp(24px,4vw,40px)}
 .pill{display:inline-flex;gap:8px;align-items:center;font:600 13px var(--body);padding:6px 12px;border-radius:99px;
@@ -174,20 +163,24 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .gcard p,.gcard li{color:var(--muted);font-size:15px;margin:0 0 8px}
 .gcard ul{padding-left:18px;margin:0}
 code{font:500 13px var(--mono);color:var(--ink);background:var(--bg2);border-radius:8px;padding:3px 8px;display:inline-block;max-width:100%;white-space:normal;overflow-wrap:anywhere;margin-top:4px}
-.guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-@media (max-width:700px){.guides{grid-template-columns:1fr}}
-.guides a{display:block;padding:18px 20px;border-radius:18px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);font:700 17px var(--display);backdrop-filter:blur(14px);transition:border-color .15s,transform .15s}
-.guides a span{display:block;font:400 14px var(--body);color:var(--muted);margin-top:4px}
-.guides a:hover{border-color:var(--accent);transform:translateY(-2px)}
-.guide>h2#guias{font:800 clamp(26px,4.5vw,34px)/1.1 var(--display);letter-spacing:-.02em;margin:48px 0 18px}
-.faq{margin-top:14px;display:grid;gap:10px}
+.faq{margin-top:32px;display:grid;gap:10px}
 details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 20px;backdrop-filter:blur(14px)}
 summary{cursor:pointer;font:700 16px var(--body);padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font:500 24px var(--mono);color:var(--accent);transition:transform .2s}
 details[open] summary::after{transform:rotate(45deg)}
 details p{margin:0 0 16px;color:var(--muted)}
-footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted);max-width:70ch}
+.site-foot{margin-top:72px;padding-top:36px;border-top:1px solid var(--line)}
+.site-foot .fgrid{display:grid;grid-template-columns:1.5fr 1.3fr 1fr;gap:32px}
+@media (max-width:700px){.site-foot .fgrid{grid-template-columns:1fr 1fr}.site-foot .fbrand{grid-column:1/-1}}
+.site-foot .brand{font:800 18px var(--display);color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.site-foot .logo{width:30px;height:30px;border-radius:10px}
+.site-foot p{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--muted);max-width:36ch}
+.site-foot h3{font:700 12px var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.site-foot nav a{display:block;font-size:14.5px;line-height:1.4;padding:5px 0;color:var(--ink);text-decoration:none;opacity:.85}
+.site-foot nav a:hover{opacity:1;color:var(--accent2);text-decoration:underline}
+.site-foot .fbottom{margin-top:32px;padding:18px 0 4px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.5;color:var(--muted);display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap}
+@media (prefers-color-scheme: dark){.site-foot nav a:hover{color:var(--accent)}}
 
 .sticky{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:20;display:none;
   align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:20px;
@@ -213,7 +206,6 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
 <div class="wrap">
   <nav class="nav">
     <div class="brand"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12 20 4"/></svg></span>Macrómetro</div>
-    <button class="theme" id="theme" type="button" aria-label="Cambiar tema" title="Cambiar tema"></button>
   </nav>
 
   <header class="hero">
@@ -310,7 +302,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
     </div>
   </main>
 
-  <section class="guide">
+  <section class="guide" id="como-funciona">
     <h2>Cómo funciona la calculadora</h2>
     <div class="gcards">
       <div class="card gcard" style="--c:var(--accent)">
@@ -337,8 +329,6 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
         <p>Si en dos semanas el peso no se mueve en la dirección que buscas, cambia unas 150-200 kcal.</p>
       </div>
     </div>
-    <h2 id="guias" style="margin-top:40px">Guías para entender tus números</h2>
-    <div class="guides"><a href="/proteinas-al-dia">¿Cuántas proteínas necesito al día?<span>Proteínas por kilo de peso</span></a><a href="/deficit-calorico">Déficit calórico: cuánto restar para perder grasa<span>Cuántas calorías restar</span></a><a href="/calorias-por-macronutriente">Calorías por macronutriente<span>4, 4 y 9: kcal de cada macro</span></a><a href="/calorias-de-mantenimiento">Cómo calcular tus calorías de mantenimiento<span>Cuántas calorías gastas al día</span></a></div>
     <div class="faq">
       <details><summary>¿Es exacto el resultado?</summary><p>Es una estimación muy buena para empezar, pero cada cuerpo es distinto. Úsala como punto de partida y ajusta según cómo evolucione tu peso.</p></details>
       <details><summary>¿Cuántas proteínas necesito al día?</summary><p>Entre 1,6 y 2,2 g por kilo es el rango con mejor respaldo para quien entrena. Aquí usamos 2 g/kg al perder grasa y 1,8 g/kg en el resto de casos.</p></details>
@@ -346,7 +336,17 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-si
     </div>
   </section>
 
-  <footer>Estimación orientativa para adultos sanos. Si estás embarazada, tienes alguna enfermedad o eres deportista de alto nivel, consulta con un dietista-nutricionista. · Macrómetro, calculadora gratuita de calorías y macronutrientes.</footer>
+<footer class="site-foot">
+  <div class="fgrid">
+    <div class="fbrand">
+      <div class="brand"><span class="logo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12 20 4"/></svg></span>Macrómetro</div>
+      <p>Calculadora gratuita de calorías y macronutrientes, basada en la fórmula Mifflin-St Jeor.</p>
+    </div>
+    <nav aria-label="Guías"><h3>Guías</h3><a href="/proteinas-al-dia">¿Cuántas proteínas necesito al día?</a><a href="/deficit-calorico">Déficit calórico: cuánto restar</a><a href="/calorias-por-macronutriente">Calorías por macronutriente</a><a href="/calorias-de-mantenimiento">Calcular calorías de mantenimiento</a></nav>
+    <nav aria-label="Herramienta"><h3>Herramienta</h3><a href="/">Calculadora de macros</a><a href="/#como-funciona">Cómo funciona</a></nav>
+  </div>
+  <div class="fbottom"><span>© 2026 Macrómetro</span><span>Información orientativa para adultos sanos. No sustituye el consejo de un dietista-nutricionista o médico.</span></div>
+</footer>
 </div>
 
 <div class="sticky" id="sticky" aria-hidden="true">
@@ -424,19 +424,6 @@ document.querySelectorAll(".seg[data-name]").forEach(g=>g.addEventListener("clic
   el.addEventListener("focus",()=>setTimeout(()=>el.select(),0));
   el.addEventListener("mouseup",e=>e.preventDefault());
 });
-
-// Tema: automático por dispositivo; el botón alterna y lo recuerda
-const icons={sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
- moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'};
-const mq=matchMedia("(prefers-color-scheme: dark)");
-const isDark=()=>document.documentElement.dataset.theme?document.documentElement.dataset.theme==="dark":mq.matches;
-function paintTheme(){$("theme").innerHTML=isDark()?icons.sun:icons.moon}
-try{const s=localStorage.getItem("theme");if(s)document.documentElement.dataset.theme=s}catch(e){}
-$("theme").addEventListener("click",()=>{
-  const n=isDark()?"light":"dark";document.documentElement.dataset.theme=n;
-  try{localStorage.setItem("theme",n)}catch(e){}paintTheme();
-});
-mq.addEventListener("change",paintTheme);paintTheme();
 
 // Barra fija en móvil cuando el resultado sale de pantalla
 if("IntersectionObserver" in window){
