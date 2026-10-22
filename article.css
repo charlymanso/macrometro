@@ -32,6 +32,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 h1{font:800 clamp(32px,6vw,52px)/1.05 var(--display);letter-spacing:-.03em;margin:0 0 16px;text-wrap:balance}
 .lede{font-size:clamp(18px,2.4vw,21px);color:var(--muted);margin:0 0 28px;line-height:1.55}
 h2{font:700 clamp(24px,4vw,30px)/1.15 var(--display);letter-spacing:-.02em;margin:40px 0 12px;text-wrap:balance}
+main h3{font:700 18px var(--display);margin:24px 0 8px}
 p,li{color:var(--ink)}
 p{margin:0 0 16px}
 ul,ol{padding-left:22px;margin:0 0 18px}
